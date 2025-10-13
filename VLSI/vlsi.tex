@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\title{VLSI Design Algorithms}
+\author{Nima Poshtiban}
+\usepackage{datetime}
+\newdate{date}{13}{10}{2025}
+\date{\displaydate{date}}
+\usepackage[utf8]{inputenc}
+\usepackage[style=numeric]{biblatex}
+\addbibresource{vlsi.bib}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\usepackage[urlcolor=blue, bookmarksopen]{hyperref}
+\usepackage[]{geometry}
+\usepackage[]{biblatex}
+\usepackage[]{cleveref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\makeindex
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+    
+\urlstyle{same}
+
+\begin{document}
+\maketitle
+\pagebreak
+\tableofcontents
+\include{preamble.tex}
+\include{boundary\_optimization.tex}
+%TODO 
+%Cost function & hierarchical design tex file goes here
+\end{document}
