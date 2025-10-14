@@ -5,14 +5,11 @@
 \newdate{date}{13}{10}{2025}
 \date{\displaydate{date}}
 \usepackage[utf8]{inputenc}
-\usepackage[style=numeric]{biblatex}
-\addbibresource{vlsi.bib}
 \usepackage{amsmath}
 \usepackage{enumitem}
 
 \usepackage[urlcolor=blue, bookmarksopen]{hyperref}
 \usepackage[]{geometry}
-\usepackage[]{biblatex}
 \usepackage[]{cleveref}
 \usepackage{fancyhdr}
 \usepackage{xcolor}
@@ -23,6 +20,7 @@
     linkcolor=blue,
     filecolor=magenta,      
     urlcolor=cyan,
+    citecolor=blue,
     pdftitle={Overleaf Example},
     pdfpagemode=FullScreen,
     }
@@ -34,7 +32,10 @@
 \pagebreak
 \tableofcontents
 \include{preamble.tex}
-\include{boundary\_optimization.tex}
+\include{boundary_optimization.tex}
 %TODO 
 %Cost function & hierarchical design tex file goes here
+
+\bibliographystyle{ieeetr}
+\bibliography{vlsi.bib}
 \end{document}
