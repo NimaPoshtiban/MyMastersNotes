@@ -82,6 +82,5 @@ jobs:
         if: github.ref_type == 'tag' && steps.find_tex.outputs.tex_files != ''
         with:
           files: "**/*.pdf"
-          body_path: CHANGELOG.txt
         env:
           GITHUB_TOKEN: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
