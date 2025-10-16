@@ -7,13 +7,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{enumitem}
-
+\usepackage{graphicx}
 \usepackage[urlcolor=blue, bookmarksopen]{hyperref}
 \usepackage[]{geometry}
 \usepackage[]{cleveref}
 \usepackage{fancyhdr}
 \usepackage{xcolor}
 \usepackage{siunitx}
+\usepackage{tikz}
+\usepackage{subcaption}
 \makeindex
 \hypersetup{
     colorlinks=true,
@@ -33,9 +35,9 @@
 \tableofcontents
 \include{preamble.tex}
 \include{boundary_optimization.tex}
-%TODO 
-%Cost function & hierarchical design tex file goes here
-
+\include{design_methodologies.tex}
+%TODO
+%Add design domains
 \bibliographystyle{ieeetr}
 \bibliography{vlsi.bib}
 \end{document}
