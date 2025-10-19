@@ -1,0 +1,36 @@
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[urlcolor=blue, bookmarksopen]{hyperref}
+\usepackage[]{geometry}
+\usepackage[]{cleveref}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{siunitx}
+\makeindex
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+	citecolor=blue,
+	pdftitle={Overleaf Example},
+	pdfpagemode=FullScreen,
+}
+
+\urlstyle{same}
+\newdate{date}{18}{10}{2025}
+\title{Computer Arithmetic}
+\date{\displaydate{date}}
+\author{Nima Poshtiban}
+
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\include{preliminary.tex}
+	%TODO numbers
+	%TODO questions
+\end{document}
