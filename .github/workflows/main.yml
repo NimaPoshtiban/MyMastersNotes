@@ -29,9 +29,16 @@ jobs:
 
           echo "Changed directories:"
           echo "$CHANGED_DIRS"
-          echo "dirs<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGED_DIRS" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+
+          # Use the GITHUB_OUTPUT file to set a multi-line output safely
+          if [ -n "${GITHUB_OUTPUT:-}" ]; then
+            echo "dirs<<EOF" >> "$GITHUB_OUTPUT"
+            printf '%s\n' "$CHANGED_DIRS" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          else
+            # Fallback for very old runners (deprecated)
+            echo "::set-output name=dirs::$CHANGED_DIRS"
+          fi
 
       - name: Find standalone .tex files (those with \\documentclass)
         id: find_tex
@@ -40,24 +47,31 @@ jobs:
           TEX_FILES=""
           for d in ${{ steps.changed_dirs.outputs.dirs }}; do
             if [ -d "$d" ]; then
-              for f in $(find "$d" -maxdepth 1 -type f -name "*.tex"); do
+              # find each .tex in the top of the directory
+              while IFS= read -r f; do
                 if grep -q '\\documentclass' "$f"; then
                   TEX_FILES+="$f"$'\n'
                 fi
-              done
+              done < <(find "$d" -maxdepth 1 -type f -name "*.tex")
             fi
           done
 
           if [ -z "$TEX_FILES" ]; then
             echo "No standalone TeX files found."
+            # Exit successfully so the workflow doesn't fail
             exit 0
           fi
 
           echo "Standalone TeX files to compile:"
-          echo "$TEX_FILES"
-          echo "tex_files<<EOF" >> $GITHUB_OUTPUT
-          echo "$TEX_FILES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          printf '%s\n' "$TEX_FILES"
+
+          if [ -n "${GITHUB_OUTPUT:-}" ]; then
+            echo "tex_files<<EOF" >> "$GITHUB_OUTPUT"
+            printf '%s\n' "$TEX_FILES" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          else
+            echo "::set-output name=tex_files::$TEX_FILES"
+          fi
 
       - name: Compile LaTeX files
         if: steps.find_tex.outputs.tex_files != ''
