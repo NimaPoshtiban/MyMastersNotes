@@ -62,3 +62,16 @@ Finally the Digit set of \textbf{Signed-Magnitude Representation} is
 \[
 	\big[-(2^{k-1}\,-\,1)\,,2^{k\,-\,1}\,-1\big]
 \]
+
+
+\subsection{Biased Representations}
+\paragraph{}
+As the name suggests\textit{\textbf{ a bias}} is applied to the \textbf{signed number}; which then can be used for conversion from\textbf{ Signed} to \textbf{Unsigned} numbers.\\
+The\textbf{ Digit set }can be shown as \( \mathbf{{[-bias,max-bias}]} \); using values from \textbf{0} to \textbf{max}, this is often called \textbf{"excess-bias"}. Most notable examples are \textbf{"excess-3" or (BCD)} and \textbf{"excess-128"} (is used for simpler hardware) coding.
+Formula Demonstration:\begin{align*}
+	x+y-bias=(x+bias)+(y+bias)-bias \\
+	x-y+bias=(x+bias)-(y+bias)+bias\\
+	\text{with kbit numbers and  a bias of } \mathbf{2^{k-1}}
+\end{align*}
+The Complexity is\textbf{ negligible} for this type.\\
+Multiplications and Divisions become \textit{more difficult} if applied on \textbf{biased numbers}, thus the \textit{bias representation} is mostly suited for the \textbf{exponent (e)} part of \textbf{the floating-point numbers}, since they are \underline{\textbf{never}} multiplied or divided. A common example of this is \textbf{IEEE 754 standard}.
