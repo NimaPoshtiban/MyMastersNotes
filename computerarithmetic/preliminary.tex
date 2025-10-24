@@ -11,7 +11,7 @@ The General Radix Conversion rule from Radix 10 to Radix (R) can be described as
 \left(d_{n-1}\dots d_{1}d_{0}=\sum _{i=0}^{n-1}d_{i}\cdot R^{i}\right)
 \]\label{conv}
 It goes without saying that the conversion from R to decimal(Radix=10) is the inverted form of the formula.
-\section{Numbers Representations}
+\paragraph{}
 There are three ways of showing a negative number. The first one is to set the \textit{MSB} if the number is negative, for example -2 with Radix of 2 can be represented as \((10000010)_{2}\) in bits. However this representation is not a proper choice because there will be twp \textit{0s}, one with positive sign and the other with negative sign.\\
 \newline
 Radix Complement\\
@@ -23,6 +23,19 @@ The formula can be written as
 where \textit{N} is the number's complement and \textit{i} is the index of the bit.\\ \\
 Radix Reduced Complement\\
 This one as the name suggests is similar to the \ref{rc} Equation but the final addition operation is not present in this one, this one suffers from the 0s representation, as 0 can have a set or unset sign bit.\\
+
+\paragraph{}
+In Radix \textit{r}, with the standard digit set \([0, r - 1]\), the number of digits needed to
+represent the natural numbers in \([0, max]\) is \[
+	\mathit{k}= \left\lfloor \log_{r}max\right\rfloor\, + 1 \,= \left\lceil log_{r}(max+1)\right\rceil
+\]
+With fixed-point representation using k whole and l fractional digits, We have
+\[
+	max = r^{k}-r^{-l}\,=r^{k} - ulp
+\]
+\textbf{"ulp"}stands for \textbf{unit in least significant position}, which \\For Integers \( ulp = 1 \).
+\\ 
+\newpage
 \subsection{Problems}
 \begin{enumerate}
 	\item  Show the following number \label{q1} \(\left(1011 1011 1011 1010 0000  0000 0000 0000_{radix=2}\right)\) in Radix 10
@@ -40,6 +53,7 @@ Step 2. Now converts it into Decimal
 \[
 	\rightarrow 16^{5}\cdot11\,+\,16^{4}\cdot11\,+\,16^{3}\cdot11\,+\,16^{2}\cdot12\,=\,12,303,360
 \]
+
 Q\ref{q2} \begin{itemize}
 	\item MSB representation: \\
 	\(-38\,=\,\mathbf{0b1100110}\)\\

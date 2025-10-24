@@ -1,0 +1,64 @@
+\chapter{Number Representations}
+
+\section{Dot notation}
+\paragraph{}Dot notation Concepts 
+\begin{itemize}
+	\item Posibit\quad  \(\newmoon\quad\in\quad [0,1]\) 
+	\item Negibit\quad	\(\ocircle\quad\in\quad [-1,0]\)
+\end{itemize}
+
+It is the most human and error-free type of Number Representations\\
+\\
+Multiplication for unsigned numbers:
+\begin{align*}
+	\newmoon\quad\newmoon\quad\newmoon \\
+	\mathcal{\times}\quad\newmoon\quad\newmoon\quad\newmoon\\
+	\--------\\
+	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\\
+	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\quad\\
+	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\qquad\qquad\\
+	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\qquad\qquad\qquad\\
+	\--\----\-----------\\
+	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon
+\end{align*}\\
+Addition for unsigned numbers:
+\begin{align*}
+	\newmoon\quad\newmoon\quad\newmoon \\
+	\textbf{+}\quad\newmoon\quad\newmoon\quad\newmoon\\
+	\--------\\
+	\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon
+\end{align*}\\
+\\
+There are many other number representations but the most important ones are:
+\begin{enumerate}
+	\item \textbf{2's} Complement
+	\item \textbf{Binary Stored-carry} or \textbf{Carry-saved} format
+	\item \textbf{Binary floating point number } (IEEE 754)
+	\item \textbf{BCD}
+\end{enumerate}
+
+\section{Signed Number Representations}
+\subsection{Signed-Magnitude Representation}
+Definition: The \textbf{most left bit} is the \textbf{sign bit} (s) \[
+	\mathbf{if}
+\left\{\begin{array}{cl}
+	s\,=\,0 & \Longrightarrow \text{positive number}\\s\,=1 & \Longrightarrow \text{negative number} 
+\end{array}\right\}
+\]
+Numbers of this Representation type are \textit{fix-point and with no fraction}\\
+In \textit{Radix r} the number \(k\)  of digits needed for representing [0,max] is
+\[
+	k\,=\,\left\lfloor\,log_{r}max\,+\,1 \right\rfloor\,+1\,=\,\left\lceil log_{r}(max+1) \right\rceil 
+\]
+\\
+Example: for Radix=2 and range is [0,7] how many digits are needed?
+\\\\Solution: \(k\,=\left\lceil log_{2}(7+1) \right\rceil \Longrightarrow\, 3\) so there are 3 digits are needed for representing this digit set\\\\
+\textbf{Disadvantages of Signed-Magnitude Representation}
+\begin{enumerate}
+	\item Because of Symmetric nature of this representation there will be two \(0\)s with different signs \(\pm0\). This is unavoidable in Radix-2 Symmetric Systems.
+	\item More overhead and thus more delay because of \(\pm0\) existence.
+\end{enumerate}
+Finally the Digit set of \textbf{Signed-Magnitude Representation} is 
+\[
+	\big[-(2^{k-1}\,-\,1)\,,2^{k\,-\,1}\,-1\big]
+\]
