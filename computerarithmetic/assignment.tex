@@ -1,0 +1,47 @@
+\documentclass[16pt,answers]{exam}
+\author{Nima Poshtiban}
+\title{Assignments of Arithmetic}
+\usepackage{datetime}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{color}
+\newdate{date}{{26}{10}{2025}}
+\date{\displaydate{date}}
+
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\pagebreak
+	\section{Assignment No.1}
+\paragraph{}
+\textbf{Unconventional radices}
+\begin{questions}
+\question Convert the negabinary number $\mathbf{(0001 1111 0010 1101)_{-two}}$ to radix 16
+	(hexadecimal).\label{a}
+	\begin{solution}[space]
+		From the Radix we can elicit the base logic for solving this problem\newline
+		\begin{enumerate}
+			\item Assuming the initial index is 1, Odd digits represents positive values whereas even digits are the quite opposite.
+			\item Applying the deduction, a mathematical formula has been extracted from the logic:
+			\[
+			  0001 1111 0010 1101 \Longrightarrow \sum_{i=1}^{16}{(d_{i})\times2^{i-1}\times(-1)^{i} }
+			\]
+			\item Calculating the initial value:
+			\(-2^{0} + -2^{2} + -2^{3} + -2^{5}  + - 2^{8}  + -2^{9} + -2^{10} + -2^{11} + -2^{12} \Longrightarrow 2781_{decimal}\)
+			\item Conversion from \(radix=10\) to \(radix=16\)
+			doing the chain division and residue operations the result is \( ADD_{radix=16} \)
+		\end{enumerate}
+	\end{solution}
+\question Repeat part \ref{a} for radix $\mathbf{-16}$ (negahexadecimal).
+	\begin{solution}[space]
+	do it!
+\end{solution}
+\question Derive a procedure for converting numbers from radix r to radix -r and vice
+versa.
+\end{questions}
+
+
+
+\end{document}
