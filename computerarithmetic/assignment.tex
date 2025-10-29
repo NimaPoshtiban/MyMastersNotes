@@ -76,13 +76,16 @@ problem.
 \begin{enumerate}
 	\item Present the design of a 4-bit comparator.
 	\begin{solution}
-		I'll start with using hot bit encoding. if x is larger first bit is set and if y is larger the second bit is set. In simple terms it means for comparison we start from the MSB, using an XOR gate. the result will get AND by x and y separately, so there will be two output but the third state (equality might happened ) so a not gate will also connected to the XOR gate output separately acting as the select line for two 2x1 Multiplexers if it is zero the (x=y) it will go to less significant bit other wise the output will be returned and the comparison does not propagate to lower bits.\\
+		I'll start with using binary encoding. since the third-state does not matter we need two outputs, just like the normal comparator but with only to output (s1,s0), this if s1 is set (10) y is larger otherwise s0 is set (01) which means x is larger  \\
 		\begin{figure}[H]
 			\includegraphics{4bc.jpg}
 		\end{figure}
 	\end{solution}
-	\item Show how five 4-bit comparators can be cascaded to compare two 16-bit
-	numbers.	
+	\item Show how five 4-bit comparator can be cascaded to compare two 16-bit
+	numbers.
+	\begin{solution}
+		using the previous comparator logic, we use each 4-bit comparator in parallel with each other, finally we add two OR gates just like before but this time each OR gate has 4 inputs from the left 4OR gate of each 4-comparator and doing OR just like before, same goes for the right 4ORs. the result is either 10 or 01, just like before 
+	\end{solution}	
 \end{enumerate}
 
 
