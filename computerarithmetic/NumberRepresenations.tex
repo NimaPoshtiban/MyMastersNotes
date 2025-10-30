@@ -1,31 +1,84 @@
 \chapter{Number Representations}
 
 \section{Dot notation}
-\paragraph{}Dot notation Concepts 
+\paragraph{} 
+Extended Dot Notation
 \begin{itemize}
-	\item Posibit\quad  \(\newmoon\quad\in\quad [0,1]\) 
-	\item Negibit\quad	\(\ocircle\quad\in\quad [-1,0]\)
+	\item Posibit\quad  \(\newmoon\quad\in\quad \{\,\,0,\,\,\,1\}\) 
+	\item Negabit\quad	\(\ocircle\quad\in\quad \{-1,0\}\)
+	\item Twins
+	\begin{enumerate}
+		\item Unibit \quad \(\boxdot \quad\in\quad\{\,-1\,,\,1\}\)
+		\item Doublebit \quad \(\blacksquare \quad\in\quad\{\,0,\,2\}\)
+			\item NegaDoublebit\quad\(\square\quad \in\quad\{\,-2,0\}\)  
+	\end{enumerate}
+
 \end{itemize}
 
-It is the most human and error-free type of Number Representations\\
-\\
-Multiplication for unsigned numbers:
+Some BSD representation using Extended Dot Notation
+\begin{itemize}
+	\item \textit{(n,p)} encoding \begin{align*}
+		\ocircle\ocircle\ocircle\ocircle\ocircle\\
+		\newmoon\,\,\newmoon\,\,\newmoon\,\newmoon\,\newmoon
+	\end{align*}
+	\item \textit{2's-compl, encoding}
+	\begin{align*}
+		\square\,\square\,\square\,\square\,\square\\
+		\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon
+	\end{align*}
+	\item  \textit{2's-compl, encoding}
+	\begin{align*}
+		\ocircle\ocircle\ocircle\ocircle\ocircle\quad\\
+		\newmoon\,\,\newmoon\,\,\newmoon\,\newmoon\,\newmoon
+	\end{align*}
+\end{itemize}
+\paragraph{}
+Unsigned positive-radix number: \begin{align*}
+		\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon
+\end{align*}
+\textit{2's Complement number}:\begin{align*}
+		\ocircle\,\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon\,\newmoon
+\end{align*}
+Negative-Radix number:\begin{align*}
+		\ocircle\,\newmoon\,\ocircle\,\newmoon\,\ocircle\,\newmoon\,\ocircle\newmoon\,\quad
+\end{align*}
+Multiplication for signed numbers:
+\begin{align*}
+	\ocircle\quad\newmoon\quad\newmoon\quad\newmoon \\
+	\mathcal{\times}\,\,\ocircle\,\,\,\,\newmoon\quad\newmoon\quad\newmoon\\
+	\hline\\
+	\ocircle\quad\newmoon\quad\newmoon\quad\newmoon\\
+	\ocircle\quad\newmoon\quad\newmoon\quad\newmoon\quad\,\,\,\,\\
+	\ocircle\quad\newmoon\quad\newmoon\quad\newmoon\qquad\quad\,\,\\
+	\newmoon\quad\ocircle\quad\ocircle\quad\ocircle\quad\qquad\qquad\\
+	\hline\\
+	\ocircle\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon
+\end{align*}\\
+
+Addition for unsigned positive-radix numbers:
+\begin{align*}
+	\ocircle\quad\newmoon\quad\newmoon\quad\newmoon \,\\
+	\textbf{+}\quad\ocircle\quad\newmoon\quad\newmoon\quad\newmoon\\
+	\hline
+	\quad\ocircle\quad\newmoon\quad\newmoon\quad\newmoon\,\,\,\,\,\newmoon
+\end{align*}\\
+Multiplication for unsigned positive-radix numbers:
 \begin{align*}
 	\newmoon\quad\newmoon\quad\newmoon \\
 	\mathcal{\times}\quad\newmoon\quad\newmoon\quad\newmoon\\
-	\--------\\
+	\hline\\
 	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\\
 	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\quad\\
 	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\qquad\qquad\\
 	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\qquad\qquad\qquad\\
-	\--\----\-----------\\
+	\hline\\
 	\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon
 \end{align*}\\
-Addition for unsigned numbers:
+Addition for unsigned positive-radix numbers:
 \begin{align*}
 	\newmoon\quad\newmoon\quad\newmoon \\
 	\textbf{+}\quad\newmoon\quad\newmoon\quad\newmoon\\
-	\--------\\
+	\hline\\
 	\quad\newmoon\quad\newmoon\quad\newmoon\quad\newmoon
 \end{align*}\\
 \\
@@ -62,7 +115,11 @@ Finally the Digit set of \textbf{Signed-Magnitude Representation} is
 \[
 	\big[-(2^{k-1}\,-\,1)\,,2^{k\,-\,1}\,-1\big]
 \]
-
+\begin{figure*}
+	\centering
+	\includegraphics{smadder.jpg}
+	\caption[short]{Adding signed-magnitude numbers using precomplementation and postcomplementation.}
+\end{figure*}
 
 \subsection{Biased Representations}
 \paragraph{}
