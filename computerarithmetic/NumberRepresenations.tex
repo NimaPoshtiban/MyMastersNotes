@@ -125,10 +125,82 @@ Finally the Digit set of \textbf{Signed-Magnitude Representation} is
 \paragraph{}
 As the name suggests\textit{\textbf{ a bias}} is applied to the \textbf{signed number}; which then can be used for conversion from\textbf{ Signed} to \textbf{Unsigned} numbers.\\
 The\textbf{ Digit set }can be shown as \( \mathbf{{[-bias,max-bias}]} \); using values from \textbf{0} to \textbf{max}, this is often called \textbf{"excess-bias"}. Most notable examples are \textbf{"excess-3" or (BCD)} and \textbf{"excess-128"} (is used for simpler hardware) coding.
-Formula Demonstration:\begin{align*}
+\paragraph{}
+\textbf{Arithmetic with Biased Numbers}
+\begin{align*}
 	x+y-bias=(x+bias)+(y+bias)-bias \\
 	x-y+bias=(x+bias)-(y+bias)+bias\\
-	\text{with kbit numbers and  a bias of } \mathbf{2^{k-1}}
+	\text{A power of 2 bias }\mathbf{2^{k-1}}\text{simplifies the addition and Subtraction}
 \end{align*}
-The Complexity is\textbf{ negligible} for this type.\\
-Multiplications and Divisions become \textit{more difficult} if applied on \textbf{biased numbers}, thus the \textit{bias representation} is mostly suited for the \textbf{exponent (e)} part of \textbf{the floating-point numbers}, since they are \underline{\textbf{never}} multiplied or divided. A common example of this is \textbf{IEEE 754 standard}.
+Comparison of biased numbers:\\
+The process is the same as  ordinary unsigned numbers.
+
+\subsection{Complement Representations}
+Arithmetic with Complement Representations:\\\\
+\begin{table}[h]
+	\centering
+	\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c||c||c||c|}
+	\hline
+	\rule[-1ex]{0pt}{2ex} Operation & Computer to be performed by mod M & Correct result with no overflow & Overflow Condition \\
+	\hline
+	\rule{0pt}{1ex} (+x)+(+y) & x+y & x+y & x+y > P \\
+	\hline
+	\rule{0pt}{2ex} (+x) + (-y) & x + (M - y)  & x - y if  y= x , M -(y- x) if  y $>$ x
+	& None \\
+	\hline
+	\rule{0pt}{2ex} (-x) + (+y) & (M-x)+y & y - x if x = y, M - (x - y) if x $>$ y
+	& None \\
+	\hline
+	\rule{0pt}{2ex} (-x) + (-y) & (M - x) + (M - y) & M -(x + y) & x + y $>$ N
+	\\
+	\hline
+
+\end{tabular}
+}
+\end{table}
+\subsubsection{2's Complement (Radix-Complement)}
+2's-complement system for r = 2\\
+\( M = 2^{k} \)\\
+\( 2^{k} – x = [(2^{k} – ulp) – x] + ulp       \)    
+\( \Rightarrow x^{compl }+ ulp \)
+
+Range of representable numbers in with k whole bits:
+from \[–2^{k–1} \to  2^{k–1} – ulp\]
+for number $x \Longrightarrow $ \(2^{k}-x\quad=\,\,\,[(2^{k}-ulp)-x]+ulp\quad=x^{compl}+ulp\)    
+\textit{adding ulp is a slow process because in the worse case it involves full carry propagation}\\
+this ulp addition usually can be avoided.
+\subsubsection{1's Complement (Digit Complement)}
+1's-complement system for r = 2\\
+\(M = 2^{k} – ulp \)\\
+\((2^{k} – ulp) – x = x^{compl'} \)\\
+Range of representable numbers in with k whole bits:
+
+from \[–2^{k–1} + ulp \to 2^{k–1} – ulp \]
+\emph{In terms of hardware, the carry-out of a (k+1) bit adder should be directly connected to its carry-in;  which is  know as end-around carry }
+\subsubsection{Radix-Complement Versus Digit-Complement Comparison }
+\begin{table}[h]
+	\centering
+	\resizebox{\columnwidth}{!}{
+	\begin{tabular}[t]{|c|c|c|}
+			\hline 	
+			\rule[-1ex]{0pt}{2ex} Feature/Property & Radix Complement &  Digit Complement \\
+			\hline
+			\rule[-1ex]{0pt}{2ex} Symmetry(\(P=N\))? & Possible for odd r (Radices of practical interest are even) & Possible for even r \\
+			\hline
+				\rule[-1ex]{0pt}{2ex} Unique zero? & Yes  & No\\
+			\hline
+			\rule[-1ex]{0pt}{2ex}Complementation  & Complement all digits and add ulp & Complement all digits  \\
+			\hline
+			\rule[-1ex]{0pt}{2ex}Mod-M addition  &Drop the carry-out& End-around carry  \\
+			\hline
+	\end{tabular}
+}
+\end{table}
+The following implementation mitigates \textit{Complementation } for Radix Complement, thus making it the most favored choice in all modern systems
+\begin{figure*}[ht]
+		\centering
+	\includegraphics{2scompl.jpg}
+	\caption[short]{Adder/subtractor architecture for 2's-complement numbers..}
+\end{figure*}
+
