@@ -204,3 +204,29 @@ The following implementation mitigates \textit{Complementation } for Radix Compl
 	\caption[short]{Adder/subtractor architecture for 2's-complement numbers..}
 \end{figure*}
 
+\subsubsection{Sign Extended 2's and 1's Complements}
+\paragraph{}
+When there is a need for extending a number to fit the size of the operation the following procedure must be followed based on the Complement representation type\\
+The general form of a number is depicted as follow:
+\[
+	x_{k-1}x_{k-2}\cdots\,x_{1}x_{0}.x_{-1}x_{-2}\cdots\,x_{-l}
+\]
+\emph{Sign Extended 2's-Complement}:\\
+Algorithm for 2's-Complement sign extension
+\begin{enumerate}
+	\item Extend the left side by replication of the \textbf{sign bit} \(x_{k-1}\) from the left :
+	\[
+			\cdots 	x_{k-1} 	x_{k-1} 	x_{k-1} 	x_{k-1}x_{k-2} \cdots\,x_{1}x_{0}.x_{-1}x_{-2}\cdots\,x_{-l}
+	\]
+	\item And  extend the right side by padding zeros:
+	\[
+			\cdots 	x_{k-1} 	x_{k-1} 	x_{k-1} 	x_{k-1}x_{k-2} \cdots\,x_{1}x_{0}.x_{-1}x_{-2}\cdots\,x_{-l},0,0,0,0\cdots
+	\] 
+\end{enumerate}
+\emph{Sign Extended 1's-Complement}:\\
+Algorithm for 1's-Complement sign extension:
+The number must be \textbf{sign extended from both sides}
+\[
+	\cdots 	x_{k-1} 	x_{k-1} 	x_{k-1} 	x_{k-1}x_{k-2} \cdots\,x_{1}x_{0}.x_{-1}x_{-2}\cdots\,x_{-l}x_{k-1} x_{k-1} x_{k-1} x_{k-1} \cdots
+\]
+\section{Direct and Indirect Signed Arithmetic}
