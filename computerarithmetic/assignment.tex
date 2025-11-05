@@ -3,6 +3,9 @@
 \title{Assignments of Arithmetic}
 \usepackage{datetime}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{ textcomp }
+\usepackage{ wasysym }
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{color}
@@ -137,15 +140,26 @@ integers.
 	\question Discuss the effect of the end-around carry needed for 1’s-complement addition on
 	the worst-case carry propagation delay and the total addition time.
 	\begin{solution}
-		There will be two extra addition which means 2 extra delays
+		for 2 K-bits numbers in 1's-Complement System, in the worst case scenario, the end-around carry might trigger \textbf{a new chain of carry propagation from LSB to MSB (before the sign bit).} thus \textbf{for k-bit results it may trigger k-1 propagation, which is roughly two times worse than the best case scenario!}
 	\end{solution}
 	
 	\question Discuss the 10’s- and 9’s-complement number systems that are the radix-10 counterparts to 2’s- and 1’s-complement representations. In particular, describe any
 	changes that might be needed in arithmetic algorithms.
-	
+		\begin{solution}
+		  The procedure is similar but with a subtle difference.
+		  For \textbf{Radix Complements} the \textbf{first (radix-1)} number starting from the left (no fraction) remains unchanged.\textit{ For 2's complement }it's $1$ for \textit{Radix 10's Complement} it's $9$. Furthermore digit's Complements are even more similar; all digits will become \( (radix-1) - digit_{i} \) , also called \textsl{"bit-wise not operation"}.
+		
+	\end{solution}
 	\question
 	Show the subtraction of 2’s-complement numbers in extended dot notation
-
+	\begin{solution}
+		\begin{align*}
+			\fullmoon\,\,\newmoon\,\,\newmoon\,\,\newmoon \\
+			-\fullmoon\,\,\newmoon\,\,\newmoon\,\,\newmoon \\
+			\hline 
+			\newmoon\,\,\fullmoon\,\,\fullmoon\,\,\fullmoon\,\,\fullmoon
+		\end{align*}
+	\end{solution}
 \end{questions}
 
 
