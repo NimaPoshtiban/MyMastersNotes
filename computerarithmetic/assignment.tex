@@ -13,7 +13,7 @@
 \newdate{date}{{26}{10}{2025}}
 \date{\displaydate{date}}
 \usepackage{float}
-
+\usepackage[]{xlop}
 \begin{document}
 	\maketitle
 	\tableofcontents
@@ -147,7 +147,7 @@ integers.
 	changes that might be needed in arithmetic algorithms.
 		\begin{solution}
 		  The procedure is similar but with a subtle difference.
-		  For \textbf{Radix Complements} the \textbf{first (radix-1)} number starting from the left (no fraction) remains unchanged.\textit{ For 2's complement }it's $1$ for \textit{Radix 10's Complement} it's $9$. Furthermore digit's Complements are even more similar; all digits will become \( (radix-1) - digit_{i} \) , also called \textsl{"bit-wise not operation"}.
+		  For \textbf{Radix Complements} the \textbf{first (radix$-1$)} number starting from the left (no fraction) remains unchanged.\textit{ For 2's complement }it's $1$ for \textit{Radix 10's Complement} it's $9$. Furthermore digit's Complements are even more similar; all digits will become \( (radix-1) - digit_{i} \) , also called \textsl{"bit-wise not operation"}.
 		
 	\end{solution}
 	\question
@@ -157,8 +157,157 @@ integers.
 			\fullmoon\,\,\newmoon\,\,\newmoon\,\,\newmoon \\
 			-\fullmoon\,\,\newmoon\,\,\newmoon\,\,\newmoon \\
 			\hline 
-			\newmoon\,\,\fullmoon\,\,\fullmoon\,\,\fullmoon\,\,\fullmoon
+			\newmoon\,\,\fullmoon\,\,\fullmoon\,\,\fullmoon\,\,\newmoon
 		\end{align*}
+	\end{solution}
+	
+	\question Solve for the following equations in both \textbf{2's-Complement} System and \textbf{1's-Complement} System\\ ($x\,=-12$,$\,y\,=10$ and $radix\,\, = 2$)
+	
+	{\large  Equations:\textbf{ \(x+y\quad,y-x\quad \,,x-y\quad,|x-y|\quad,-x-y\quad,-y-x\)}}
+	
+	\begin{solution}
+		Calculate the 2's and 1's Complements for both x and y:\\
+		\begin{align*}
+			\overline{x}\,=\,\overline{1100}\Longrightarrow\\
+			&&\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+						&  1 & 1 & 1 & 1 \cr
+						-& 1& 1  & 0  & 0  \cr
+						\trule
+					 	& 0 & 0 & 1 & 1 \Longrightarrow \text{1's Complement} \cr
+						+ &   & &  & 1 \cr
+						\trule
+						 & 0 & 1 & 0 &0 \Longrightarrow \text{2's Complement} \cr
+					}
+				}
+		\end{align*}
+	
+		\begin{align*}
+				\overline{y}\,=\,\overline{1010}\Longrightarrow\\
+			&&\vbox{
+				\openup1pt
+				\def\trule{\noalign{\smallskip\hrule\smallskip}}
+				\halign{&\tabskip1em$\mathstrut#$\cr
+					&  1 & 1 & 1 & 1 \cr
+					-& 1& 0  & 1  & 0  \cr
+					\trule
+					& 0 & 1 & 0 & 1 \Longrightarrow \text{1's Complement} \cr
+					+ &   & &  & 1 \cr
+					\trule
+					& 0 & 1 & 1 &0 \Longrightarrow \text{2's Complement} \cr
+				}
+			}
+		\end{align*}
+		\begin{enumerate}
+			\item 	Solve for x+y:	\\ (2's-Complement)
+				\begin{align*}
+				\text{since}\quad x < 0,\quad y + \overline{x} > 0\quad 
+				\Rightarrow& \cr 
+				&\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+					& 1& 0  & 1  & 0  \cr
+						+& 0& 1  & 0  & 0  \cr
+						\trule
+						& 0 & 1 & 1 &0  \cr 
+					}
+				}
+			\end{align*}
+				\\ (1's-Complement)
+				\begin{align*}
+				&\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+						&0& 1& 0  & 1  & 0  \cr
+						+&1& 0&  0 & 1  & 1 \cr
+						\trule
+						&1 &1 & 1 & 0 & 1 \cr 
+					}
+				}
+			\end{align*}
+			\item 	Solve for y-x:	\\ (2's-Complement)
+				\begin{align*}
+				\text{since}\quad -x > 0,\quad y - x > 0\quad 
+				\Rightarrow & \cr 
+				&\text{Overflow and discard}\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+						& 1& 0  & 1  & 0  \cr
+						+& 1& 1 & 0  & 0  \cr
+						\trule
+					\underline{(1)}&	0 & 1 & 1 &0  \cr 
+					}
+				}
+			\end{align*}
+				\\
+				 (1's-Complement)
+			\begin{align*}
+				\text{since}\quad -x > 0,\quad y - x > 0\quad 
+				\Rightarrow & \cr 
+				&\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+					   &0	& 1& 0  & 1  & 0  \cr
+						+ & 0& 1& 1 & 0  & 0  \cr
+						\trule
+				&	\text{end-around carry}\Longrightarrow	\underline{(1)}& 1 &	0  & 1 &0  \cr
+						+ & &   & &  & 1  \cr
+						\trule
+						&  & 0& 1& 1& 1 \cr 
+					}
+				}
+			\end{align*}
+			
+			\item Solve for x-y:
+			\\
+			(2's-Complement)
+			\begin{align*}
+				\text{since}\quad x < 0,\quad x - y < 0\quad 
+					\Rightarrow \overline{-x+y} & \cr 
+				&\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+						&	& 0&  1 & 0  & 0  \cr
+						&+  & 0& 1 & 1  & 0  \cr
+						\trule
+						&  & 1& 0& 1& 0 \cr 
+					}
+				}
+			\end{align*}
+				\\
+			(1's-Complement)
+			\begin{align*}
+				\text{since}\quad x < 0,\quad x - y < 0\quad 
+				\Rightarrow \overline{-x+y} & \cr 
+				&\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+						& &1&	& 0&  0 & 1  & 1  \cr
+						&+ &1&  & 0& 1 & 0  & 1  \cr
+						\trule
+						& & & 1& 1& 0& 0& 0 \cr 
+					}
+				}
+			\end{align*}
+		\end{enumerate}
+		
+
+
+	
 	\end{solution}
 \end{questions}
 
