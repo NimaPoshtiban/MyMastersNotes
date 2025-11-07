@@ -303,6 +303,46 @@ integers.
 					}
 				}
 			\end{align*}
+					\item Solve for $\left|x-y\right|:$
+			\\
+			(2's-Complement)
+			\begin{align*}
+				\text{since}\quad x < 0,\quad x - y < 0\quad 
+				\Rightarrow {-y-x} & \cr 
+				&\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+						&	& 0&  1 & 1  & 0  \cr
+						&+  & 1& 1 & 0  & 0  \cr
+						\trule
+						& \underline{1} & 0& 0& 1& 0 \cr 
+					}
+				}
+			\end{align*}
+				\\
+			(1's-Complement)
+			\begin{align*}
+				\text{since}\quad x < 0,\quad x - y < 0\quad 
+				\Rightarrow {-y-x} & \cr 
+				&\Longrightarrow&& 
+				\vbox{
+					\openup1pt
+					\def\trule{\noalign{\smallskip\hrule\smallskip}}
+					\halign{&\tabskip1em$\mathstrut#$\cr
+						&	& 0&  1 & 0  & 1  \cr
+						&+  & 1& 1 & 0  & 0  \cr
+						\trule
+						& \text{end-around}\quad\underline{1} & 0& 0& 0& 1 \cr 
+					}
+				}
+				\Longrightarrow 0001 + 1 \,=0010
+			\end{align*}
+			\item Solve for -x-y\\
+			it's the exact form of $\left|x-y\right|:$ which is already solved 
+			\item Solver for -y-x\\
+			 it's the exact form of$\left|x-y\right|:$ which is already solved 
 		\end{enumerate}
 		
 
