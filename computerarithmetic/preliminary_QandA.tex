@@ -1,0 +1,33 @@
+\section{Problems}
+\begin{enumerate}
+	\item  Show the following number \label{q1} \(\left(1011 1011 1011 1010 0000  0000 0000 0000_{radix=2}\right)\) in Radix 10
+	\item Write these number's with all 3 methods of Numbers\linebreak Representations: \((-38),\left(-24\right)\) and the Radix is 10.\label{q2}
+	\item Calculate the result of following addition:\\
+	\textbf{\textit{1F2CB00 + AFCBADO}}\label{q3}
+\end{enumerate}
+\subsection{Solutions}
+Q\ref{q1}\, Using \eqref{conv} formula \\ 
+Step 1. For simplicity convert each nibble into a hexadecimal value
+\[
+\underbrace{1011}_{B}\underbrace{1011}_{B}\underbrace{1011}_{B}\underbrace{1011}_{C}\underbrace{0000}_{0}\underbrace{0000}_{0}\,=\mathsf{BBBC00h}
+\]
+Step 2. Now converts it into Decimal
+\[
+\rightarrow 16^{5}\cdot11\,+\,16^{4}\cdot11\,+\,16^{3}\cdot11\,+\,16^{2}\cdot12\,=\,12,303,360
+\]
+
+Q\ref{q2} \begin{itemize}
+	\item MSB representation: \\
+	\(-38\,=\,\mathbf{0b1100110}\)\\
+	\(-24\,=\,\mathbf{0b111000}\)
+	\item Radix Complement \\
+	\(-38\,\rightarrow\,99-38+1\,=62_{r=10}\rightarrow\,\mathbf{0b0011 1110}\)\\
+	\(-24\,\rightarrow\,99-24+1\,=\,76_{r=10}\rightarrow\,\mathbf{0b0100 1100}\)\\
+	\item Reduced Radix Complement\\
+	\(-38\,\rightarrow\,99-38\,=61_{r=10}\rightarrow\,\mathbf{0b0011 1011}\)\\
+	\(-24\,\rightarrow\,99-24\,=\,75_{r=10}\rightarrow\,\mathbf{0b0100 1011}\)\\
+\end{itemize}
+Q\ref{q3}
+\[
+\mathsf{1F2CB00 + AFCBADO\,=\,CEF85D0}
+\]

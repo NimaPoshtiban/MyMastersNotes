@@ -229,4 +229,24 @@ The number must be \textbf{sign extended from both sides}
 \[
 	\cdots 	x_{k-1} 	x_{k-1} 	x_{k-1} 	x_{k-1}x_{k-2} \cdots\,x_{1}x_{0}.x_{-1}x_{-2}\cdots\,x_{-l}x_{k-1} x_{k-1} x_{k-1} x_{k-1} \cdots
 \]
-\section{Direct and Indirect Signed Arithmetic}
+\section{Using Positions OR Signed Digits}
+2's-Complement Representation of binary numbers can be formulated as follow:
+\begin{align*}
+\cdots 	x_{k-1} 	x_{k-1} 	x_{k-1} 	x_{k-1}x_{k-2} \cdots\,x_{1}x_{0}.x_{-1}x_{-2}\cdots\,x_{-l},0,0,0,0\cdots
+\Longrightarrow -x_{k-1}\cdot2^{k}+ \sum_{i=-l}^{k-2}
+\end{align*}
+As an example consider \(x=(10100110)_{2's-compl}\)\\
+thus \(\Longrightarrow -2^{7}+2^{5}+2^{2}+2^{1}\,=-90\)
+\\Verifying the solution: \(\overline{x}\Longrightarrow 90\)\quad 
+\subsection{The Generalized Formula}
+Let $\lambda$ be a vector with \(\lambda_{k-1}\lambda_{k-2}\cdots \lambda_{1}\lambda_{0}.\lambda_{-1}\lambda_{-2}\cdots\lambda_{-l}\) \\ where \(\lambda_{i}\in\left\{-1,1 \right\} \) and \((x_{k-1}x_{k-2}\cdots\,x_{1}x_{0}.x_{-1}x_{-2}\cdots\,x_{-l})_{r,\lambda}\) \[
+\Longrightarrow \sum_{i=-l}^{k-1}{\lambda_{i}x_{i}r^{i}}
+\]
+This formula covers unsigned radix-r, 2's complement and negative number systems.\\
+\(\forall r>0\Longrightarrow \lambda=111\cdots1111\)\\
+\(\forall\overline{r}\Longrightarrow \lambda=-111\cdots1111\)\\
+\(\forall r < 0 \Longrightarrow \cdots\cdots\overline{1}\,1\,\overline{1}\,1\)\\
+Each Digit $x_{i}$ can be represented via
+\[
+	x_{i}=\lambda_{i}|x_{i}|\,\,\lambda\in\left\{-1,1\right\}
+\]
